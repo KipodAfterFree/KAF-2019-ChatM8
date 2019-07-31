@@ -2,4 +2,6 @@ body {
     background-color: #aaa5c8;
 }
 
-/* App Style */
+#inputs > * {
+    width: 100%;
+}
