@@ -21,7 +21,7 @@ api("chat", function ($action, $parameters) {
             return [false, "Missing parameters"];
         } else if ($action === "write") {
             if (isset($parameters->user) && isset($parameters->content)) {
-                if (accounts_user($parameters) !== null) {
+                if (accounts_user($parameters->user) !== null) {
                     $mID = chat_create($parameters->content);
                     chat_write($user->id, $parameters->user, $mID, false);
                     chat_write($parameters->user, $user->id, $mID, true);
@@ -60,9 +60,6 @@ function chat_read($user1, $user2)
             foreach ($chat_database->$user1->$user2 as $message) {
                 array_push($messages, chat_message($message));
             }
-        }
-        foreach ($chat_database->$id as $user => $chat) {
-            array_push($messages, $user);
         }
     }
     return $messages;

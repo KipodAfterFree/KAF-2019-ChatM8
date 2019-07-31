@@ -7,10 +7,21 @@ function load(loggedIn) {
     view("app");
     if (loggedIn) {
         view("home");
-        transition("home", IN, loadChatList);
+        transition("home", IN, () => {
+            loadUserID();
+            loadChatList();
+        });
     } else {
         transition("nologin", IN);
     }
+}
+
+function loadUserID() {
+    api(ACCOUNTS_ENDPOINT, ACCOUNTS_API, "verify", null, (success, result, error) => {
+        if (success) {
+            get("userid").innerText = "Your id: " + result.id;
+        }
+    }, accounts_fill());
 }
 
 function loadChatList() {
@@ -49,4 +60,11 @@ function yeet() {
             get("input").value = "";
         }
     }, accounts_fill());
+}
+
+function create() {
+    chat = get("user").value;
+    get("input").value = "Hello there";
+    yeet();
+    window.location.reload(true);
 }

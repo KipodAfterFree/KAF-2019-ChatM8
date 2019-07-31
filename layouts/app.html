@@ -1,11 +1,11 @@
 <div id="home" column>
     <p>Welcome to ChatM8</p>
-    <p>a place to chat m8s</p>
+    <p id="userid"></p>
     <p>List of chats:</p>
     <div id="chatlist" column>
 
     </div>
-    <button>New Chat</button>
+    <button onclick="page(this.parentNode, 'new')">New Chat</button>
 </div>
 <div id="chat" column>
     <p>M8 Chat</p>
@@ -16,6 +16,11 @@
         <input id="input" placeholder="Message"/>
         <button onclick="yeet();">Yeet</button>
     </div>
+</div>
+<div id="new" column>
+    <p>New chat</p>
+    <input id="user" placeholder="User ID"/>
+    <button onclick="create()">Create</button>
 </div>
 <div id="nologin">
     <p>Login or yeet out of here!</p>
