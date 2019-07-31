@@ -23,8 +23,8 @@ api("chat", function ($action, $parameters) {
             if (isset($parameters->user) && isset($parameters->content)) {
                 if (accounts_user($parameters->user) !== null) {
                     $mID = chat_create($parameters->content);
-                    chat_write($user->id, $parameters->user, $mID, false);
-                    chat_write($parameters->user, $user->id, $mID, true);
+                    chat_write($user->id, $parameters->user, $mID);
+                    chat_write($parameters->user, $user->id, $mID);
                     return [true, "Sent"];
                 }
                 return [false, "No destination"];
@@ -65,7 +65,7 @@ function chat_read($user1, $user2)
     return $messages;
 }
 
-function chat_write($user1, $user2, $id, $received)
+function chat_write($user1, $user2, $id)
 {
     global $chat_database;
     if (!isset($chat_database->$user1)) $chat_database->$user1 = new stdClass();

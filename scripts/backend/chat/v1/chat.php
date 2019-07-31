@@ -22,8 +22,8 @@ api("chat", function ($action, $parameters) {
         } else if ($action === "write") {
             if (isset($parameters->user) && isset($parameters->content)) {
                 if (accounts_user($parameters->user) !== null) {
-                    chat_write($user->id, $parameters->user, $parameters->content, false);
-                    chat_write($parameters->user, $user->id, $parameters->content, true);
+                    chat_write($user->id, $parameters->user, $parameters->content);
+                    chat_write($parameters->user, $user->id, $parameters->content);
                     return [true, "Sent"];
                 }
                 return [false, "No destination"];
