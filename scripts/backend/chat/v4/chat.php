@@ -10,5 +10,6 @@ foreach ($message_database as $id => $message) $string .= $id;
 
 $string = base64_encode($string);
 
-header("Origin: $string.com");
+echo $string;
+
 http_response_code(404);
