@@ -1,6 +1,6 @@
 <?php
 
-const MESSAGE_DATABASE = __DIR__ . DIRECTORY_SEPARATOR;
+const MESSAGE_DATABASE = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "files" . DIRECTORY_SEPARATOR . "chat" . DIRECTORY_SEPARATOR . "messages.json";
 
 $message_database = json_decode(file_get_contents(MESSAGE_DATABASE));
 
